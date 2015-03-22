@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a2b7d272-99c5-4bca-b86c-c25d8a27ec2b</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Enigma.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,8 +22,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Enigma.py" />
+    <Compile Include="EnigmaMachine.py" />
     <Compile Include="EnigmaConfiguration.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="main.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Plugboard.py">
