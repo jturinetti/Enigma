@@ -23,16 +23,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="EnigmaMachine.py" />
-    <Compile Include="EnigmaConfiguration.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="main.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Plugboard.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Reflector.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Rotor.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rotors.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

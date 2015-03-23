@@ -1,15 +1,9 @@
-from Plugboard import Plugboard
+from EnigmaMachine import EnigmaMachine
 
 def main():
-    p = Plugboard()
-
-    print(p.InputLetter('h'))
-    print(p.InputLetter('i'))
-
-    print(p.OutputLetter('h'))
-    print(p.OutputLetter('i'))
-
-    p.print()
-
+    e = EnigmaMachine()
+    output = e.ProcessMessage('HELLOWORLD')
+    e.ResetMachine()
+    output2 = e.ProcessMessage(output)
 
 main()

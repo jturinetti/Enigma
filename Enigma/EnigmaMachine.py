@@ -1,25 +1,30 @@
-import EnigmaConfiguration
-import Plugboard
-import Rotor
+from Plugboard import Plugboard
+from Rotors import Rotors
+from Reflector import Reflector
 
 class EnigmaMachine:
     def __init__(self):
-        # TODO
-        pass
+        self.plugboard = Plugboard()
+        self.rotors = Rotors()
+        self.reflector = Reflector()    
 
-    @classmethod
-    def WithConfiguration(self, EnigmaConfiguration):
-        # TODO
-        pass
+    def ProcessMessage(self, message):
+        output = ''
+        for char in message:
+            char = self.plugboard.InputLetter(char)
+            char = self.rotors.InputLetter(char)
+            char = self.reflector.ReflectLetter(char)
+            char = self.rotors.OutputLetter(char)
+            char = self.plugboard.OutputLetter(char)
 
-    def SetConfiguration(EnigmaConfiguration):
-        # TODO
-        pass
+            output = output + char
 
-    def Encrypt(message):
-        # TODO
-        pass
+            self.rotors.Rotate()
 
-    def Decrypt(message):
-        # TODO
-        pass
+        print('Original message: ' + message)
+        print('Processed message: ' + output)
+        return output
+    
+    def ResetMachine(self):
+        print('Resetting machine...')
+        self.rotors.ResetRotors()

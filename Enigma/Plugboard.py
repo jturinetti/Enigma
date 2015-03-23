@@ -3,16 +3,11 @@ from random import shuffle
 
 class Plugboard(object):
 
-    _alphabet = list(string.ascii_lowercase)
+    _alphabet = list(string.ascii_uppercase)
 
-    def __init__(self, plugboard=None):
-
-        if plugboard is not None:
-            self.plugboard = plugboard
-            return
-
+    def __init__(self):
         self.plugboard = [None] * 26        
-        swapped_letters = list(string.ascii_lowercase)
+        swapped_letters = list(string.ascii_uppercase)
         shuffle(swapped_letters)        
         swapped_letters = swapped_letters[0:20]
 
