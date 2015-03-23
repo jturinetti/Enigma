@@ -12,6 +12,10 @@ def main():
 
     output = e.ProcessMessage('GGGGGGGGGGGGGGGGGGGGGGGGGGGGGG')
     e.ResetMachine()
-    output2 = e.ProcessMessage(output)    
+    output2 = e.ProcessMessage(output)   
+    
+    print()
+    print('Done...')
+    print() 
 
 main()
