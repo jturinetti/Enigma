@@ -10,6 +10,7 @@ class EnigmaMachine:
 
     def ProcessMessage(self, message):
         output = ''
+        message = message.upper()
         for char in message:
             char = self.plugboard.InputLetter(char)
             char = self.rotors.InputLetter(char)

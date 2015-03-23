@@ -15,10 +15,7 @@ class Rotors(object):
     def SetRotorStartingPosition(self, rotor_num, starting_position):
         self.rotors[rotor_num].position = starting_position % 26
 
-    def ResetRotors(self):
-        self.rotors[0].SetCipherString(self._rotor_I_cipher)
-        self.rotors[1].SetCipherString(self._rotor_II_cipher)
-        self.rotors[2].SetCipherString(self._rotor_III_cipher)
+    def ResetRotors(self):        
         self.SetRotorStartingPosition(0, 0)
         self.SetRotorStartingPosition(1, 0)
         self.SetRotorStartingPosition(2, 0)
