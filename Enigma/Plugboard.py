@@ -1,3 +1,4 @@
+from __future__ import print_function
 import string
 from random import shuffle
 
@@ -80,4 +81,4 @@ class Plugboard:
             if self._plugboard[alphabet_counter] is None:
                 self._plugboard[alphabet_counter] = char
 
-            alphabet_counter = alphabet_counter + 1 
+            alphabet_counter = alphabet_counter + 1

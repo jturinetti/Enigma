@@ -1,3 +1,6 @@
+# Enigma Machine Simulator
+# Python v
+
 # Thanks to the following pages for the information and education I needed.
 # http://red-badger.com/blog/2015/02/23/understanding-the-enigma-machine-with-30-lines-of-ruby-star-of-the-2014-film-the-imitation-game/
 # http://en.wikipedia.org/wiki/Enigma_machine
@@ -19,6 +22,7 @@
 #   * Added machine-level methods that call component-level methods
 #   * Print statements, conforming to Python's naming conventions, etc.
 
+from __future__ import print_function
 from Plugboard import Plugboard
 from Rotors import Rotors
 from Reflector import Reflector
@@ -27,7 +31,7 @@ class EnigmaMachine:
     def __init__(self):
         self._plugboard = Plugboard()
         self._rotors = Rotors()
-        self._reflector = Reflector()    
+        self._reflector = Reflector()          
 
     def set_rotor_position(self, rotor_num, rotor_position):
         print('Setting rotor ' + str(rotor_num) + ' to position ' + str(rotor_position))
