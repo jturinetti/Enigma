@@ -1,27 +1,29 @@
 import string
-from collections import deque
 
 class _Rotor(object):
 
     _alphabet = list(string.ascii_uppercase)
 
     def __init__(self, cipher_string, starting_position = 0):
-        self.position = starting_position % 26     
-        self.SetCipherString(cipher_string)           
+        self._position = starting_position % 26  
+        self._cipher_d = list(cipher_string)  
 
-    def SetCipherString(self, cipher_string):
-        self.cipher_d = list(cipher_string)
+    def rotate(self):
+        self._position = (self._position + 1) % 26       
+        
+    def set_position(self, rotor_position):
+         self._position = rotor_position % 26
 
-    def Rotate(self):
-        self.position = (self.position + 1) % 26        
+    def get_position(self):
+        return self._position
 
-    def InputLetter(self, char):
+    def input_letter(self, char):
         index = self._alphabet.index(char)
-        return self.cipher_d[25 - ((index + self.position) % 26)]
+        return self._cipher_d[25 - ((index + self._position) % 26)]
 
-    def OutputLetter(self, char):        
-        index = self.cipher_d.index(char)
-        return self._alphabet[25 - ((index + self.position) % 26)]
+    def output_letter(self, char):        
+        index = self._cipher_d.index(char)
+        return self._alphabet[25 - ((index + self._position) % 26)]
        
         
 
