@@ -27,14 +27,18 @@ from Rotors import Rotors
 from Reflector import Reflector
 
 class EnigmaMachine:
-    def __init__(self):
+    def __init__(self, rotor_order = None, reflector = 'A'):
         self._plugboard = Plugboard()
-        self._rotors = Rotors()
-        self._reflector = Reflector()          
+        self._rotors = Rotors(rotor_order)
+        self._reflector = Reflector(reflector)
 
-    def set_rotor_position(self, rotor_num, rotor_position):
-        print('Setting rotor ' + str(rotor_num) + ' to position ' + str(rotor_position))
-        self._rotors.set_rotor_position(rotor_num, rotor_position)
+    def set_rotor_ring_position(self, rotor_num, ring_position):
+        print('Setting rotor ' + str(rotor_num) + ' ring position to position ' + str(ring_position))
+        self._rotors.set_ring_position(rotor_num, ring_position)
+
+    def set_rotor_message_key(self, message_key):
+        print('Setting rotor message key to ' + message_key)
+        self._rotors.set_message_key(message_key)    
 
     def add_plugboard_mapping(self, char1, char2):
         print('Adding plugboard mapping [' + char1.upper() + ' <-> ' + char2.upper() + ']')
@@ -64,21 +68,22 @@ class EnigmaMachine:
         print('Resetting machine (plugboard and rotor settings)...')
         print()
         self._plugboard.reset()
-        self._rotors.reset()      
+        self._rotors.reset()    # resets offsets and ring settings
 
     def process_message(self, message):
         output = ''
         message = message.upper()
         for char in message:
+            # rotation occurs first
+            self._rotors.rotate()
+
             char = self._plugboard.input_letter(char)
             char = self._rotors.input_letter(char)
             char = self._reflector.reflect_letter(char)
             char = self._rotors.output_letter(char)
             char = self._plugboard.output_letter(char)
 
-            output = output + char
-
-            self._rotors.rotate()
+            output = output + char            
 
         print('Original message: ' + message)
         print('Processed message: ' + output)
