@@ -1,5 +1,6 @@
 import string
 
+# umkehrwalze
 class Reflector:
 
     _alphabet = list(string.ascii_uppercase)

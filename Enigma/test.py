@@ -27,14 +27,14 @@ def run_tests():
     e.set_rotor_ring_position(0, 25)
     e.set_rotor_ring_position(1, 25)
     e.set_rotor_ring_position(2, 10)
-    e.set_rotor_message_key('ABC')    
+    e.set_rotor_offset('ABC')    
 
     long_output = e.process_message('GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG')   
 
     e.set_rotor_ring_position(0, 25)
     e.set_rotor_ring_position(1, 25)
     e.set_rotor_ring_position(2, 10)
-    e.set_rotor_message_key('ZZZ')
+    e.set_rotor_offset('ZZZ')
 
     # incorrect message key; this should be wrong
     wrong_output = e.process_message(long_output)
@@ -43,7 +43,7 @@ def run_tests():
     e.set_rotor_ring_position(0, 25)
     e.set_rotor_ring_position(1, 25)
     e.set_rotor_ring_position(2, 10)
-    e.set_rotor_message_key('ABC')
+    e.set_rotor_offset('ABC')
 
     long_output2 = e.process_message(long_output)
 

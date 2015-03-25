@@ -4,12 +4,14 @@
 # http://red-badger.com/blog/2015/02/23/understanding-the-enigma-machine-with-30-lines-of-ruby-star-of-the-2014-film-the-imitation-game/
 # http://en.wikipedia.org/wiki/Enigma_machine
 # http://en.wikipedia.org/wiki/Enigma_rotor_details
+# http://users.telenet.be/d.rijmenants/en/enigmatech.htm
+# http://wiki.franklinheath.co.uk/index.php/Enigma/Sample_Messages
 
 # Version 1 - 3/23/2015
 #   * Basic Enigma functionality; can encrypt/decrypt messages and set/reset rotor states
 #   * Random plugboard configuration generated for each newly created EnigmaMachine object; not configurable at this time
 #   * Only supports 3 rotors
-#   * Does not support double-stepping of second rotor
+#   * Does not support double-stepping rotors
 #   * Limited configuration options for rotors and reflector
 #   * Only supports English alphabet
 #   * All messages are converted to upper-case
@@ -32,14 +34,17 @@ class EnigmaMachine:
         self._rotors = Rotors(rotor_order)
         self._reflector = Reflector(reflector)
 
+    # ringstellung
     def set_rotor_ring_position(self, rotor_num, ring_position):
         print('Setting rotor ' + str(rotor_num) + ' ring position to position ' + str(ring_position))
         self._rotors.set_ring_position(rotor_num, ring_position)
 
-    def set_rotor_message_key(self, message_key):
-        print('Setting rotor message key to ' + message_key)
+    # grundstellung
+    def set_rotor_offset(self, message_key):
+        print('Setting rotor offsets to ' + message_key)
         self._rotors.set_message_key(message_key)    
-
+    
+    # steckerbrett
     def add_plugboard_mapping(self, char1, char2):
         print('Adding plugboard mapping [' + char1.upper() + ' <-> ' + char2.upper() + ']')
         self._plugboard.add_mapping(char1, char2)
