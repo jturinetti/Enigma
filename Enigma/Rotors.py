@@ -42,20 +42,20 @@ class Rotors:
         self.rotors[2].reset_rotor_offset()
 
     def rotate(self):
-        self.rotors[0].rotate()        
-        if self.rotors[0].get_ring_position() == 0:
+        self.rotors[2].rotate()        
+        if self.rotors[2].get_ring_position() == 0:
             self.rotors[1].rotate()
             if self.rotors[1].get_ring_position() == 0:
-                self.rotors[2].rotate()
+                self.rotors[0].rotate()
 
     def input_letter(self, char):
-        for rotor in self.rotors:
+        for rotor in reversed(self.rotors):
             char = rotor.input_letter(char)
 
         return char
 
     def output_letter(self, char):
-        for rotor in reversed(self.rotors):
+        for rotor in self.rotors:
             char = rotor.output_letter(char)
 
         return char
