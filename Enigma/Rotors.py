@@ -30,16 +30,16 @@ class Rotors:
     def set_message_key(self, message_key):
         rotor_counter = 0
         for char in message_key:    # length of key should match # of rotors!
-            self.rotors[rotor_counter].set_rotor_offset(char)
+            #self.rotors[rotor_counter].set_rotor_offset(char)
             rotor_counter = rotor_counter + 1        
 
     def reset(self):        
         self.set_ring_position(0, 0)
         self.set_ring_position(1, 0)
         self.set_ring_position(2, 0)
-        self.rotors[0].reset_rotor_offset()
-        self.rotors[1].reset_rotor_offset()
-        self.rotors[2].reset_rotor_offset()
+        #self.rotors[0].reset_rotor_offset()
+        #self.rotors[1].reset_rotor_offset()
+        #self.rotors[2].reset_rotor_offset()
 
     def rotate(self):
         self.rotors[2].rotate()        
@@ -49,7 +49,7 @@ class Rotors:
                 self.rotors[0].rotate()
 
     def input_letter(self, char):
-        for rotor in reversed(self.rotors):
+        for rotor in reversed(self.rotors):            
             char = rotor.input_letter(char)
 
         return char

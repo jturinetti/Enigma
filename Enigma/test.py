@@ -2,7 +2,17 @@ from __future__ import print_function
 from EnigmaMachine import EnigmaMachine
 
 def run_tests():
-    e = EnigmaMachine()
+    # e = EnigmaMachine([2, 1, 0])    # rotor order from left to right: III, II, I
+    # e.set_rotor_ring_position(2, 25)
+    # e.process_message('AAA')    
+    
+    # e.reset_machine()  
+
+    e = EnigmaMachine(None, 'B')
+    e.process_message('AAAAA')
+
+    e.reset_machine()
+
     e.add_plugboard_mapping('a', 'z')
     e.add_plugboard_mapping('b', 'x')
     e.add_plugboard_mapping('d', 'd')
