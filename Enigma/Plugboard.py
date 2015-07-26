@@ -1,16 +1,19 @@
-from __future__ import print_function
-import string
 from random import shuffle
+import string
+from EnigmaLogger import EnigmaLogger
 
+# steckerbrett
 class Plugboard:
 
     _alphabet = list(string.ascii_uppercase)
 
-    def __init__(self):        
+    def __init__(self, verbose = True):
+        self._logger = EnigmaLogger(verbose)
         self.reset()
     
     def reset(self):
-        self._plugboard = [None] * 26
+        self._logger.Log('Resetting plugboard.')
+        self._plugboard = [None] * len(self._alphabet)
         self._mapped_chars = []
         self._doesMappingExist = False
 
@@ -19,15 +22,18 @@ class Plugboard:
         char2 = char2.upper()
 
         if char1 == char2:
+            self._logger.Log('Characters are the same.  Cannot map.')
             return        
 
         if char1 in self._mapped_chars or char2 in self._mapped_chars:
-            print('Cannot map characters that are already mapped.')
+            self._logger.Log('Cannot map characters that are already mapped.')
             return
 
         if len(self._mapped_chars) == 20:   # 10 pairs of mapped characters
-            print('Max number of plugboard mappings reached.')
+            self._logger.Log('Max number of plugboard mappings reached.')
             return
+
+        self._logger.Log('Adding plugboard mapping [' + char1 + ' <-> ' + char2 + ']')
 
         index1 = self._alphabet.index(char1)
         index2 = self._alphabet.index(char2)
@@ -37,7 +43,10 @@ class Plugboard:
         self._doesMappingExist = True
     
     def generate_random_mappings(self):
+        # reset plugboard first
         self.reset()
+
+        self._logger.Log('Generating random plugboard mappings.')
 
         swapped_letters = list(string.ascii_uppercase)
         shuffle(swapped_letters)        

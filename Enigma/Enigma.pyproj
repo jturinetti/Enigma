@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a2b7d272-99c5-4bca-b86c-c25d8a27ec2b</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>test.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="EnigmaLogger.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="EnigmaMachine.py" />
     <Compile Include="main.py">
       <SubType>Code</SubType>
@@ -38,9 +41,18 @@
     <Compile Include="Rotors.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="test.py">
+    <Compile Include="UnitTests\full_messages.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UnitTests\invalid_arguments.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UnitTests\test_messages.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UnitTests\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

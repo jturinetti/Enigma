@@ -1,49 +1,73 @@
 import string
+from EnigmaLogger import EnigmaLogger
 
-class _Rotor(object):
+class _Rotor:
 
     _alphabet = list(string.ascii_uppercase)
 
-    def __init__(self, cipher_string, starting_position = 0):
-        self._position = starting_position % 26
-        #self._offset_position = 0
-        self._cipher_d = list(cipher_string)  
+    def __init__(self, rotor_label, cipher_string, notch_window, ringstellung = 'A', grundstellung = 'A', verbose = True):
+        self._rotor_label = rotor_label
+        if type(ringstellung) is str:
+            self._ringstellung = ringstellung.upper()
+        else:
+            self._ringstellung = self.pos_to_alphabet_char(ringstellung)
+        self._grundstellung = grundstellung.upper()
+        self._notch_window = notch_window.upper()
+        self._cipher_d = list(cipher_string)
+        self._logger = EnigmaLogger(verbose)
+
+    def char_to_alphabet_pos(self, char):
+        return self._alphabet.index(char)
+
+    def char_to_cipher_pos(self, char):
+        return self._cipher_d.index(char)        
+
+    def pos_to_alphabet_char(self, pos):
+        return self._alphabet[pos % len(self._alphabet)]
+
+    def pos_to_cipher_char(self, pos):
+        return self._cipher_d[pos % len(self._cipher_d)]
+
+    def set_ringstellung(self, pos):
+        if type(pos) is str:
+            self._ringstellung = pos.upper()
+        else:
+            self._ringstellung = self.pos_to_alphabet_char(pos)
+
+    def set_grundstellung(self, pos):
+        if type(pos) is str:
+            self._grundstellung = pos.upper()
+        else:
+            self._grundstellung = self.pos_to_alphabet_char(pos)
 
     def rotate(self):
-        self._position = (self._position + 1) % 26
-        #self._offset_position = (self._offset_position + 1) % 26  # not sure if this is right...
+        rotate_next_rotor = self._grundstellung == self._notch_window
+
+        self._logger.Log('Rotor ' + self._rotor_label + ' is rotating.')
+        self._grundstellung = self.pos_to_alphabet_char(self.char_to_alphabet_pos(self._grundstellung) + 1)
+
+        return rotate_next_rotor        
+
+    def map_letter(self, char, reverse = False):
+        position = self.char_to_alphabet_pos(char)
+        position = (position + self.char_to_alphabet_pos(self._grundstellung) + len(self._alphabet) - self.char_to_alphabet_pos(self._ringstellung)) % len(self._alphabet)
+        mapped_char = self.pos_to_alphabet_char(position)
+
+        if reverse == True:
+            position = self.char_to_cipher_pos(mapped_char)
+
+        if reverse == True:
+            mapped_char = self.pos_to_alphabet_char(position)
+        else:
+            mapped_char = self.pos_to_cipher_char(position)
+
+        position = self.char_to_alphabet_pos(mapped_char)
+        position = (position + ((len(self._alphabet) - self.char_to_alphabet_pos(self._grundstellung) + self.char_to_alphabet_pos(self._ringstellung))) % len(self._alphabet))
         
-    def set_ring_position(self, rotor_position):
-         self._position = rotor_position % 26
+        mapped_char = self.pos_to_alphabet_char(position)
+        return mapped_char   
 
-    def get_ring_position(self):
-        return self._position
-
-    #def set_rotor_offset(self, char):
-    #    char = char.upper()
-    #    offset_counter = 0
-    #    isFound = False
-    #    while isFound == False:
-    #        if char == self._alphabet[offset_counter]:
-    #            self._offset_position = offset_counter
-    #            isFound = True
-    #        offset_counter = offset_counter + 1
-
-    #def reset_rotor_offset(self):
-    #    self._offset_position = 0
-
-    def input_letter(self, char):
-        index = self._alphabet.index(char)
-        cipher_letter = self._cipher_d[((index + self._position) % 26)]
-        return cipher_letter
-
-    def output_letter(self, char):        
-        #index = self._cipher_d.index(char)
-        #alpha_letter =  self._alphabet[((index + self._position) % 26)]
-        #return alpha_letter
-        index = self._alphabet.index(char)
-        cipher_letter = self._cipher_d[((index + self._position) % 26)]
-        return cipher_letter
+    
        
         
 
