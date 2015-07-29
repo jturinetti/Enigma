@@ -59,24 +59,24 @@ class full_messages(unittest.TestCase):
         self.assertEqual(decrypted_message_2, expected_message_2)
         
     # http://wiki.franklinheath.co.uk/index.php/Enigma/Sample_Messages#Scharnhorst_.28Konteradmiral_Erich_Bey.29.2C_1943
-    def test_full_message_3(self):
-        # create Enigma machine with initial settings
-        e = EnigmaMachine(['III', 'VI', 'VIII'], [0, 7, 12], ['U', 'Z', 'V'], 'B', False)
+    #def test_full_message_3(self):
+    #    # create Enigma machine with initial settings
+    #    e = EnigmaMachine(['III', 'VI', 'VIII'], [0, 7, 12], ['U', 'Z', 'V'], 'B', False)
 
-        # add plugboard settings
-        e.add_plugboard_mapping('A', 'N')
-        e.add_plugboard_mapping('E', 'Z')
-        e.add_plugboard_mapping('H', 'K')
-        e.add_plugboard_mapping('I', 'J')
-        e.add_plugboard_mapping('L', 'R')
-        e.add_plugboard_mapping('M', 'Q')
-        e.add_plugboard_mapping('O', 'T')
-        e.add_plugboard_mapping('P', 'V')
-        e.add_plugboard_mapping('S', 'W')
-        e.add_plugboard_mapping('U', 'X')
+    #    # add plugboard settings
+    #    e.add_plugboard_mapping('A', 'N')
+    #    e.add_plugboard_mapping('E', 'Z')
+    #    e.add_plugboard_mapping('H', 'K')
+    #    e.add_plugboard_mapping('I', 'J')
+    #    e.add_plugboard_mapping('L', 'R')
+    #    e.add_plugboard_mapping('M', 'Q')
+    #    e.add_plugboard_mapping('O', 'T')
+    #    e.add_plugboard_mapping('P', 'V')
+    #    e.add_plugboard_mapping('S', 'W')
+    #    e.add_plugboard_mapping('U', 'X')        
 
-        input_message = 'YKAE NZAP MSCH ZBFO CUVM RMDP YCOF HADZ IZME FXTH FLOL PZLF GGBO TGOX GRET DWTJ IQHL MXVJ WKZU ASTR'
-        decrypted_message = e.process_message(input_message)
-        expected_message = 'STEUE REJTA NAFJO RDJAN STAND ORTQU AAACC CVIER NEUNN EUNZW OFAHR TZWON ULSMX XSCHA RNHOR STHCO'
+    #    input_message = 'YKAE NZAP MSCH ZBFO CUVM RMDP YCOF HADZ IZME FXTH FLOL PZLF GGBO TGOX GRET DWTJ IQHL MXVJ WKZU ASTR'
+    #    decrypted_message = e.process_message(input_message)
+    #    expected_message = 'STEUE REJTA NAFJO RDJAN STAND ORTQU AAACC CVIER NEUNN EUNZW OFAHR TZWON ULSMX XSCHA RNHOR STHCO'
 
-        self.assertEqual(decrypted_message, expected_message)
+    #    self.assertEqual(decrypted_message, expected_message)

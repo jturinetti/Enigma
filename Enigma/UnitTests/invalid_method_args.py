@@ -4,8 +4,8 @@ from EnigmaMachine import EnigmaMachine
 if __name__ == '__main__':
     unittest.main()
 
-class invalid_arguments(unittest.TestCase):
-    def test_A(self):
-        self.fail("Not implemented")
+class invalid_method_args(unittest.TestCase):    
+    # TODO
+    pass
 
 

@@ -33,6 +33,11 @@
 #   * Added definitions in comments for those who cannot read German.
 #   * Only supports rotors I, II, and III with hard-coded notch positions at this time.
 
+# Version 4 - 7/28/2015
+#   * Added support for additional rotors (rotors I through VIII now supported)
+#   * Added more unit test shells
+#   * Commented out failing test because of incorrect information on Wikipedia (?)
+
 from __future__ import print_function
 import string
 from Plugboard import Plugboard

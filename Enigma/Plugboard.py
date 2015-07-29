@@ -50,7 +50,7 @@ class Plugboard:
 
         swapped_letters = list(string.ascii_uppercase)
         shuffle(swapped_letters)        
-        swapped_letters = swapped_letters[0:20]                
+        swapped_letters = swapped_letters[0:20]
 
         i = 0
         while i < len(swapped_letters):         
