@@ -55,9 +55,7 @@ class _Rotor:
 
         if reverse == True:
             position = self.char_to_cipher_pos(mapped_char)
-
-        if reverse == True:
-            mapped_char = self.pos_to_alphabet_char(position)
+            mapped_char = self.pos_to_alphabet_char(position)            
         else:
             mapped_char = self.pos_to_cipher_char(position)
 
