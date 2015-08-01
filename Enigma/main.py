@@ -13,4 +13,9 @@ def main():
     e4 = EnigmaMachine()
     m2 = e4.process_message(m1)
 
+    e5 = EnigmaMachine()
+    encrypted_message = e5.process_message('Hi my name is Jeremy and Im pretty awesome.')
+    e6 = EnigmaMachine()
+    decrypted_message = e6.process_message(encrypted_message)
+
 main()
