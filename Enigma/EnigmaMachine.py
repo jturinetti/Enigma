@@ -38,6 +38,11 @@
 #   * Added more unit test shells
 #   * Commented out failing test because of incorrect information on Wikipedia (?)
 
+# Version 5 - 8/9/2015
+#   * Updated unit test shells for invalid constructor args; will only focus on EnigmaMachine object parameters
+#   * Added private validate method to check EnigmaMachine parameter types & values
+#   * Added list of acceptable rotor & reflector values
+
 from __future__ import print_function
 import string
 from Plugboard import Plugboard
