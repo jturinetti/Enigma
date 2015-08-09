@@ -5,33 +5,15 @@ if __name__ == '__main__':
     unittest.main()
 
 class invalid_constructor_args(unittest.TestCase):
-    # Rotor tests
-    def test_rotor_invalid_label(self):
+    # Enigma Machine entry point tests
+    def test_invalid_walzenlage(self):
         pass
 
-    def test_rotor_invalid_cipher(self):
+    def test_invalid_ringstellung(self):
         pass
 
-    def test_rotor_invalid_notch_windows(self):
+    def test_invalid_grundstellung(self):
         pass
 
-    def test_rotor_invalid_ringstellung(self):
+    def test_invalid_umkehrwalze(self):
         pass
-
-    def test_rotor_invalid_grundstellung(self):
-        pass    
-
-    # Rotors tests
-    def test_rotors_invalid_rotor_order(self):
-        pass
-
-    def test_rotors_invalid_ring_settings(self):
-        pass
-
-    def test_rotors_invalid_ground_settings(self):
-        pass
-
-    # Reflector tests
-    def test_reflector_invalid_reflector_label(self):
-        pass    
-

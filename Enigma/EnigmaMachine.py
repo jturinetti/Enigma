@@ -47,22 +47,50 @@ from Rotors import Rotors
 class EnigmaMachine:
 
     _alphabet = list(string.ascii_uppercase)
+    _valid_rotors = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII']
+    _valid_reflectors = ['A', 'B']
 
     # walzenlage: rotor order
     # ringstellung: ring setting
     # grundstellung: ground setting / start position
     # umkehrwalze: reflector
     def __init__(self, walzenlage = ['I', 'II', 'III'], ringstellung = ['A', 'A', 'A'], grundstellung = ['A', 'A', 'A'], umkehrwalze = 'A', verbose = True):
-        rotor_count = len(walzenlage)
-        ringstellung_count = len(ringstellung)
-        grundstellung_count = len(grundstellung)
+        # validate machine parameters
+        self.__validate__(walzenlage, ringstellung, grundstellung, umkehrwalze)
 
-        assert rotor_count == ringstellung_count == grundstellung_count
-
+        # set variables for machine usage
         self._plugboard = Plugboard(verbose)
         self._rotors = Rotors(walzenlage, ringstellung, grundstellung, verbose)
         self._reflector = Reflector(umkehrwalze, verbose)
     
+    def __validate__(self, walzenlage, ringstellung, grundstellung, umkehrwalze):
+        # check parameter types
+        assert isinstance(walzenlage, list)        
+        assert isinstance(ringstellung, list)
+        assert isinstance(grundstellung, list)
+        assert type(umkehrwalze) is str
+
+        # check parameter lengths        
+        rotor_count = len(walzenlage)
+        ringstellung_count = len(ringstellung)
+        grundstellung_count = len(grundstellung)
+        assert rotor_count == ringstellung_count == grundstellung_count
+        assert len(umkehrwalze) == 1
+
+        # check for invalid array values & types
+        for rotor in walzenlage:
+            assert type(rotor) is str            
+            assert rotor.upper() in self._valid_rotors
+        for r in ringstellung:
+            assert type(r) is str
+            assert len(r) == 1
+            assert r.upper() in self._alphabet
+        for g in grundstellung:
+            assert type(g) is str
+            assert len(g) == 1
+            assert g.upper() in self._alphabet
+        assert umkehrwalze.upper() in self._valid_reflectors
+
     # steckerbrett: plugboard
     def add_plugboard_mapping(self, char1, char2):        
         self._plugboard.add_mapping(char1, char2)
@@ -91,7 +119,7 @@ class EnigmaMachine:
             if char in self._alphabet:
                 # rotation occurs first
                 self._rotors.rotate()
-
+                
                 char = self._plugboard.input_letter(char)
                 char = self._rotors.input_letter(char)
                 char = self._reflector.reflect_letter(char)
