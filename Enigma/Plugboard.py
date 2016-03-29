@@ -40,7 +40,7 @@ class Plugboard:
         index2 = self._alphabet.index(char2)
         self._plugboard[index2] = char1
         self._plugboard[index1] = char2
-        self._fill()
+        self.__fill()
         self._doesMappingExist = True
     
     def generate_random_mappings(self):
@@ -65,7 +65,7 @@ class Plugboard:
             self._mapped_chars.append(char1)
             self._mapped_chars.append(char2)
 
-        self._fill()     
+        self.__fill()     
         self._doesMappingExist = True     
                     
     def print(self):
@@ -85,7 +85,7 @@ class Plugboard:
         plugboard_index = self._plugboard.index(char)
         return self._alphabet[plugboard_index]
         
-    def _fill(self):
+    def __fill(self):
         alphabet_counter = 0
         for char in self._alphabet:
             if self._plugboard[alphabet_counter] is None:

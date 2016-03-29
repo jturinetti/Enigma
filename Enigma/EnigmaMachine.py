@@ -61,14 +61,14 @@ class EnigmaMachine:
     # umkehrwalze: reflector
     def __init__(self, walzenlage = ['I', 'II', 'III'], ringstellung = ['A', 'A', 'A'], grundstellung = ['A', 'A', 'A'], umkehrwalze = 'A', verbose = True):
         # validate machine parameters
-        self.__validate__(walzenlage, ringstellung, grundstellung, umkehrwalze)
+        self.__validate(walzenlage, ringstellung, grundstellung, umkehrwalze)
 
         # set variables for machine usage
         self._plugboard = Plugboard(verbose)
         self._rotors = Rotors(walzenlage, ringstellung, grundstellung, verbose)
         self._reflector = Reflector(umkehrwalze, verbose)
     
-    def __validate__(self, walzenlage, ringstellung, grundstellung, umkehrwalze):
+    def __validate(self, walzenlage, ringstellung, grundstellung, umkehrwalze):
         # check parameter types
         assert isinstance(walzenlage, list)        
         assert isinstance(ringstellung, list)

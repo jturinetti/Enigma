@@ -13,5 +13,7 @@ if __name__ == '__main__':
         loader.loadTestsFromTestCase(test_messages.test_messages)
     ))
     
+    # TODO: make all tests pass
+    
     runner = unittest.TextTestRunner(verbosity = 2)
     runner.run(suite)
